@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 
 import { Navigation } from '../Navigation';
 
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 let defaultProps;
 let wrapper;
 
@@ -14,8 +14,13 @@ beforeEach(() => {
     wrapper = setup()
 });
 
+afterEach(() => {
+    jest.clearAllMocks()
+})
+
 describe('Navigation', () => {
     it('should match snapshot', () => {
+        console.log(wrapper.debug())
         expect(wrapper).toMatchSnapshot()
     })
 })
