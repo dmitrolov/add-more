@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,10 +17,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import PropTypes from 'prop-types';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: 'flex',
@@ -84,7 +85,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const Home = () => {
+export const Home = ({title}) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -161,6 +162,7 @@ export const Home = () => {
         </List>
       </Drawer>
       <main className={classes.content}>
+        <h3>{title}</h3>
         <div className={classes.toolbar} />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -188,4 +190,8 @@ export const Home = () => {
       </main>
     </div>
   );
+}
+
+Home.propTypes = {
+  title: PropTypes.string.isRequired
 }
