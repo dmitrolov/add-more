@@ -20,7 +20,6 @@ afterEach(() => {
 
 describe('Navigation', () => {
     it('should match snapshot', () => {
-        console.log(wrapper.debug())
         expect(wrapper).toMatchSnapshot()
     })
 })
